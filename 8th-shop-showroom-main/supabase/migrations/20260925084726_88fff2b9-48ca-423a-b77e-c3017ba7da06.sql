@@ -1,0 +1,1 @@
+ALTER FUNCTION public.track_order(text,text) SECURITY INVOKER; REVOKE ALL ON FUNCTION public.track_order(text,text) FROM anon, authenticated, PUBLIC; GRANT EXECUTE ON FUNCTION public.track_order(text,text) TO service_role;

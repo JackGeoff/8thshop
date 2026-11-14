@@ -1,0 +1,183 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * THE 8TH SHOP — design system.
+ * Warm ivory / ink / clay palette built for jewellery, accessories and gifts.
+ * All colors are oklch tokens. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --color-sand: var(--sand);
+  --color-clay: var(--clay);
+  --color-clay-foreground: var(--clay-foreground);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-gold: var(--gold);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.25rem;
+
+  --background: oklch(0.975 0.011 85);
+  --foreground: oklch(0.205 0.014 55);
+  --card: oklch(0.99 0.006 85);
+  --card-foreground: oklch(0.205 0.014 55);
+  --popover: oklch(0.99 0.006 85);
+  --popover-foreground: oklch(0.205 0.014 55);
+
+  --primary: oklch(0.205 0.014 55);
+  --primary-foreground: oklch(0.975 0.011 85);
+  --secondary: oklch(0.945 0.017 82);
+  --secondary-foreground: oklch(0.28 0.02 55);
+  --muted: oklch(0.945 0.017 82);
+  --muted-foreground: oklch(0.505 0.021 62);
+  --accent: oklch(0.62 0.128 45);
+  --accent-foreground: oklch(0.985 0.008 85);
+  --destructive: oklch(0.55 0.19 27);
+  --destructive-foreground: oklch(0.985 0.008 85);
+
+  --border: oklch(0.895 0.014 82);
+  --input: oklch(0.895 0.014 82);
+  --ring: oklch(0.62 0.128 45);
+
+  --sand: oklch(0.928 0.026 80);
+  --clay: oklch(0.62 0.128 45);
+  --clay-foreground: oklch(0.985 0.008 85);
+  --ink: oklch(0.185 0.012 55);
+  --ink-foreground: oklch(0.965 0.012 85);
+  --gold: oklch(0.78 0.098 82);
+
+  --sidebar: oklch(0.975 0.011 85);
+  --sidebar-foreground: oklch(0.205 0.014 55);
+  --sidebar-primary: oklch(0.205 0.014 55);
+  --sidebar-primary-foreground: oklch(0.975 0.011 85);
+  --sidebar-accent: oklch(0.945 0.017 82);
+  --sidebar-accent-foreground: oklch(0.28 0.02 55);
+  --sidebar-border: oklch(0.895 0.014 82);
+  --sidebar-ring: oklch(0.62 0.128 45);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: var(--clay);
+    color: var(--clay-foreground);
+  }
+}
+
+/* Editorial display heading */
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+@utility intro-display {
+  font-family: "Bodoni Moda", ui-serif, Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+/* Small caps eyebrow label */
+@utility eyebrow {
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--muted-foreground);
+}
+
+@utility hairline {
+  border-bottom: 1px solid var(--border);
+}
+
+/* Underline that grows on hover */
+@utility link-underline {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
